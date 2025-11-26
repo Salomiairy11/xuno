@@ -115,8 +115,8 @@
   gap: clamp(20px, 4vw, 50px);
   z-index: 2;
   padding: 0 clamp(8px, 2vw, 16px);
-  width: calc(100% - (10% * 2));
-  max-width: 1200px;
+  width: 73%; 
+  max-width: 1100px;
   letter-spacing: 1.8px;
 }
 
@@ -136,7 +136,7 @@
 }
 
 .headerTitle {
-  font-size: clamp(10px, 2vw, 18px);
+  font-size: clamp(8px, 1.6vw, 15px);
   letter-spacing: clamp(0.4px, 0.15vw, 1px);
   white-space: nowrap;
   overflow: hidden;
@@ -145,7 +145,7 @@
 
 .headerArtist {
   font-family: 'Monument Extended', sans-serif;
-  font-size: clamp(9px, 1.8vw, 15px);
+  font-size: clamp(7px, 1.4vw, 13px);
   font-weight: 400;
   margin-top: clamp(1px, 0.3vh, 3px);
   white-space: nowrap;
@@ -175,7 +175,7 @@
 
 .albumContainer {
   position: relative;
-  left: 10%;
+  left: 11%;
   width: 100%;
   z-index: 1;
   margin-top: clamp(80px, 15vh, 180px);
@@ -185,7 +185,7 @@
 }
 
 .albumImage {
-  width: clamp(300px, 65vw, 600px);
+  width: clamp(260px, 50vw, 480px);
   height: auto;
   max-height: 75vh;
   display: block;
@@ -200,16 +200,18 @@
 
 .albumInfo {
   position: absolute;
-  top: clamp(280px, 12vh, 380px);
+  top: clamp(260px, 12vh, 350px);
+  left: calc(10% + clamp(260px, 50vw, 480px) - 5%);
+  transform: translateX(-5%);
   color: white;
   z-index: 2;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: clamp(8px, 1.5vh, 16px);
-  max-width: clamp(250px, 35vw, 450px);
-  padding: 0;
+  max-width: clamp(240px, 32vw, 420px);
 }
+
 
 .albumTitle {
   font-family: 'Monument Extended', sans-serif;
@@ -286,7 +288,7 @@
 .albumDate {
   font-family: 'Montserrat', sans-serif;
   position: absolute;
-  left: -10px;
+  left: -13px;
   bottom: clamp(12px, 2vh, 30px);
   transform: rotate(-90deg);
   transform-origin: left bottom;
