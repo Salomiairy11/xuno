@@ -302,12 +302,10 @@
 
 .albumDate .date {
   color: white;
-  font-size: clamp(16px, 1.5vw, 18px);
 }
 
 .albumDate .category {
   font-weight: 700;
-  font-size: clamp(16px, 1.5vw, 18px);
 }
 
 /*responsive design*/
