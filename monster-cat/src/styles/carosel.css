@@ -175,6 +175,7 @@
 
 .albumContainer {
   position: relative;
+  display: inline-block;
   left: 13%;
   width: 100%;
   z-index: 1;
@@ -200,17 +201,18 @@
 
 .albumInfo {
   position: absolute;
-  top: clamp(260px, 12vh, 350px);
-  left: calc(clamp(260px, 50vw, 480px) - 5%);
-  transform: translateX(-5%);
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%) translateX(-10%); 
   color: white;
   z-index: 2;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: clamp(8px, 1.5vh, 16px);
-  max-width: clamp(240px, 32vw, 420px);
+  max-width: clamp(200px, 28vw, 380px);
 }
+
 
 .albumTitle {
   font-family: 'Monument Extended', sans-serif;
@@ -248,34 +250,35 @@
 .view {
   background: var(--btn-color);
   font-family: 'Monument Extended', sans-serif;
-  padding: clamp(8px, 1.5vh, 15px) clamp(12px, 1.5vw, 28px);
+  padding: clamp(5px, 1vh, 10px) clamp(10px, 1vw, 20px);
   border: none;
   color: white;
-  font-size: clamp(10px, 1vw, 14px);
+  font-size: clamp(8px, 0.8vw, 12px);
   font-weight: 500;
   cursor: pointer;
-  letter-spacing: clamp(0.6px, 0.1vw, 1.4px);
+  letter-spacing: clamp(0.4px, 0.08vw, 1px); 
   transition: all 0.3s ease;
   white-space: nowrap;
-}
-
-.view:hover {
-  background: white;
-  color: black;
 }
 
 .listen {
   font-family: 'Monument Extended', sans-serif;
   background: transparent;
   border: 1px solid white;
-  padding: clamp(8px, 1.5vh, 15px) clamp(12px, 1.5vw, 28px);
+  padding: clamp(5px, 1vh, 10px) clamp(10px, 1vw, 20px);
   color: white;
-  font-size: clamp(10px, 1vw, 14px);
+  font-size: clamp(8px, 0.8vw, 12px); 
   font-weight: 500;
   cursor: pointer;
-  letter-spacing: clamp(0.6px, 0.1vw, 1.4px);
+  letter-spacing: clamp(0.4px, 0.08vw, 1px);
   transition: all 0.3s ease;
   white-space: nowrap;
+}
+
+
+.view:hover {
+  background: white;
+  color: black;
 }
 
 .listen:hover {

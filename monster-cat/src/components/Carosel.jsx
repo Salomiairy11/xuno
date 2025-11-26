@@ -150,7 +150,6 @@ export default function Carosel() {
                 </span>
                 <span className="date">-{album.date}</span>
               </div>
-
               <div className="albumInfo">
                 <h2 className="albumTitle">{album.title}</h2>
                 <h3 className="albumArtist">{album.artist}</h3>
