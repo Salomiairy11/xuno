@@ -9,8 +9,17 @@ import {
 } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 
+export default function Contact() {
+  const icons = [
+    FaInstagram,
+    FaTiktok,
+    FaXTwitter,
+    FaTwitch,
+    FaFacebook,
+    FaDiscord,
+    FaHeadphones,
+  ]
 
-function Contact() {
   return (
     <div
       style={{
@@ -18,21 +27,16 @@ function Contact() {
         flexDirection: 'column',
         gap: '24px',
         position: 'fixed',
-        left: '90%',
+        left: '85%',
         top: '50%',
         transform: 'translateY(-50%)',
         padding: '12px',
+        color: '#fff',
       }}
     >
-      <FaInstagram size={28} color="#fff" />
-      <FaTiktok size={28} color="#fff" />
-      <FaXTwitter size={28} color="#fff" />
-      <FaTwitch size={28} color="#fff" />
-      <FaFacebook size={28} color="#fff" />
-      <FaDiscord size={28} color="#fff" />
-      <FaHeadphones size={28} color="#fff" />
+      {icons.map((Icon, index) => (
+        <Icon key={index} size={28} />
+      ))}
     </div>
   )
 }
-
-export default Contact

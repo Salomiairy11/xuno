@@ -7,10 +7,6 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { useState } from 'react'
 
-// Nav is now rendered at App level
-
-
-
 const albums = [
   {
     id: 0,
@@ -20,6 +16,7 @@ const albums = [
     date: 'Releases November 25, 2025',
     category: 'Silk',
     color: 'rgb(246, 142, 47)',
+
   },
   {
     id: 1,
@@ -41,7 +38,7 @@ const albums = [
   },
 ]
 
-function SampleNextArrow(props) {
+function NextArrow(props) {
   const { className, style, onClick, currentSlide, slideCount } = props
   const isLast = currentSlide === slideCount - 1
   return (
@@ -57,14 +54,14 @@ function SampleNextArrow(props) {
         borderRadius: '50%',
         background: 'rgba(0,0,0,0.35)',
         opacity: isLast ? 0.5 : 1,
-        pointerEvents: 'auto',
+        pointerEvents: isLast ? 'none' : 'auto'
       }}
       onClick={onClick}
     />
   )
 }
 
-function SamplePrevArrow(props) {
+function PrevArrow(props) {
   const { className, style, onClick, currentSlide } = props
   const isFirst = currentSlide === 0
   return (
@@ -80,7 +77,7 @@ function SamplePrevArrow(props) {
         borderRadius: '50%',
         background: 'rgba(0,0,0,0.35)',
         opacity: isFirst ? 0.5 : 1,
-        pointerEvents: 'auto',
+        pointerEvents: isFirst ? 'none' : 'auto',
       }}
       onClick={onClick}
     />
@@ -101,36 +98,33 @@ export default function Carosel() {
     cssEase: 'ease-out',
     arrows: true,
     beforeChange: (oldIndex, newIndex) => setActive(newIndex),
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   }
   return (
-    <div className="album-list">
+    <div className="albumList">
       <Slider {...settings}>
         {albums.map((album, idx) => (
           <section
             key={album.id}
-            className={`album-section ${idx === active ? 'active-slide' : ''}`}
+            className={`albumSection ${idx === active ? 'activeSlide' : ''}`}
             style={{
-              height: '100vh'
+              height: '100vh',
             }}
           >
             <div
-              className="album-bg"
+              className="albumBg"
               style={{ backgroundImage: `url(${album.image})` }}
             />
-            {/* Nav is rendered at App level; removed per-slide Nav to avoid duplicates */}
-            <div className="album-header">
+            <div className="albumHeader">
               {albums.map((alb, i) => (
                 <div
                   key={alb.id}
-                  className={`album-header-item ${
-                    i === active ? 'active' : ''
-                  }`}
+                  className={`headerItem ${i === active ? 'active' : ''}`}
                 >
-                  <div className="header-progress">
+                  <div className="headerProgress">
                     <div
-                      className="progress-bar"
+                      className="progressbar"
                       style={{
                         width: i === active ? '100%' : '0%',
                         transition:
@@ -140,38 +134,35 @@ export default function Carosel() {
                       }}
                     />
                   </div>
-                  <span className="header-title">{alb.title}</span>
-                  <span className="header-artist">{alb.artist}</span>
+                  <div>
+                    <p className="headerTitle">{alb.title}</p>
+                    <p className="headerArtist">{alb.artist}</p>
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="album-container">
-              <img
-                src={album.image}
-                className="album-foreground"
-                alt={album.title}
-              />
-
-              <div className="album-meta">
+            <div className="albumContainer">
+              <img src={album.image} className="albumImage" alt={album.title} />
+              <div className="albumDate">
                 <span className="category" style={{ color: album.color }}>
                   {album.category}
                 </span>
                 <span className="date">-{album.date}</span>
               </div>
 
-              <div className="album-info">
-                <h2 className="album-title">{album.title}</h2>
-                <h3 className="album-artist">{album.artist}</h3>
+              <div className="albumInfo">
+                <h2 className="albumTitle">{album.title}</h2>
+                <h3 className="albumArtist">{album.artist}</h3>
 
                 <div className="buttons">
                   <button
-                    className="view-btn"
+                    className="view"
                     style={{ '--btn-color': album.color }}
                   >
                     VIEW RELEASE
                   </button>
-                  <button className="listen-btn">LISTEN ON PLAYER</button>
+                  <button className="listen">LISTEN ON PLAYER</button>
                 </div>
               </div>
             </div>

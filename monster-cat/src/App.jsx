@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Carosel from './components/Carosel'
 import Contact from './components/Contact'
 import Nav from './components/Nav'

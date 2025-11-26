@@ -7,17 +7,17 @@ export default function CookieBanner() {
   if (!visible) return null
 
   return (
-    <div className="cookie-banner">
-      <p className="cookie-text">
+    <div className="banner">
+      <p className="text">
         This page places and reads third party cookies on your browser. Click
         here to read more.
       </p>
 
-      <div className="cookie-actions">
-        <button className="btn accept" onClick={() => setVisible(false)}>
+      <div className="options">
+        <button className="accept" onClick={() => setVisible(false)}>
           ACCEPT
         </button>
-        <button className="btn reject" onClick={() => setVisible(false)}>
+        <button className="reject" onClick={() => setVisible(false)}>
           REJECT
         </button>
       </div>

@@ -1,52 +1,47 @@
-.cookie-banner {
+.banner {
   width: 100%;
   height: 12%;
   background: #f5f5f5;
   border-top: 1px solid #ddd;
-
-  padding: 12px 18px;         /* slightly taller and tighter horizontally */          /* ensures consistent height */
-
+  padding: 12px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;                  /* reduce spacing between text and buttons */
-
+  gap: 10px;
   position: fixed;
   bottom: 0;
   left: 0;
-
   font-family: Arial, sans-serif;
-  font-size: 18px;            /* slightly larger for readability */
+  font-size: 18px;
   box-sizing: border-box;
-
-  flex-wrap: wrap;            /* prevents overflow on smaller screens */
+  flex-wrap: wrap;
 }
 
-.cookie-text {
-  flex: 1;                    /* lets text take available space without pushing buttons off */
-  max-width: 68%;             /* slightly reduce width to keep buttons on-screen */
+.text {
+  flex: 1;
+  max-width: 68%;
   color: #333;
   line-height: 1.4;
   white-space: normal;
-  overflow-wrap: anywhere; /* ensure long words don't overflow */
+  overflow-wrap: anywhere;
 }
 
-.cookie-actions {
+.options {
   display: flex;
-  gap: 8px;                   /* smaller gap between buttons */
-  flex-shrink: 0;             /* buttons won’t get squished */
+  gap: 8px;
+  flex-shrink: 0;
   align-items: center;
   justify-content: flex-end;
 }
 
-.btn {
-  padding: 18px 18px;          /* increased padding for better tap targets */
+.options button {
+  padding: 18px 18px;
   border: none;
   cursor: pointer;
-  font-size: 16px;            /* increase font size for buttons */
+  font-size: 16px;
   letter-spacing: 1px;
   border-radius: 4px;
-  min-width: 100px;          /* keep buttons stable width */
+  min-width: 100px;
 }
 
 .accept {
@@ -60,19 +55,20 @@
   color: black;
 }
 
-/* Responsive: stack on small screens and ensure no overflow */
 @media (max-width: 480px) {
-  .cookie-banner {
+  .banner {
     padding: 12px 12px;
   }
-  .cookie-text {
+  .text {
     max-width: 100%;
     font-size: 14px;
     margin-bottom: 8px;
   }
-  .cookie-actions {
+  .options {
     width: 100%;
     justify-content: space-between;
   }
-  .btn{ min-width: 48%; }
+  .options button {
+    min-width: 48%;
+  }
 }

@@ -1,12 +1,10 @@
-import React from 'react'
 import logo from '../assets/logo.jpg'
-import { RxHamburgerMenu } from 'react-icons/rx' // ← hamburger icon
+import { RxHamburgerMenu } from 'react-icons/rx'
 
 export default function Navbar({ openMenu = () => {}, isMenuOpen = false }) {
 
   return (
     <>
-
       <nav
         style={{
           position: 'fixed',
@@ -26,23 +24,20 @@ export default function Navbar({ openMenu = () => {}, isMenuOpen = false }) {
           src={logo}
           alt="Logo"
           style={{
-            height: '60px',
+            height: '70px',
             width: 'auto',
             zIndex: 10001,
-            marginLeft: '20px',
+            marginLeft: '4%',
           }}
         />
-
-        {/* Hamburger Icon */}
         {!isMenuOpen && (
         <RxHamburgerMenu
-          size={35}
+          size={30}
           color="white"
           style={{
             cursor: 'pointer',
             zIndex: 2,
-            marginRight: '6%',
-            marginTop: 0,
+            marginRight:'14%',
           }}
           onClick={() => openMenu()}
         />

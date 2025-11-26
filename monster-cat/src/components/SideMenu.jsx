@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/sidemenu.css'
 import {
   FaInstagram,
@@ -62,6 +62,7 @@ function SideMenu({ isOpen = false, closeMenu = () => {} }) {
   const toggleDropdown = (title) => {
     setOpenDropdown(openDropdown === title ? null : title)
   }
+
   useEffect(() => {
     const onKeydown = (e) => {
       if (e.key === 'Escape') closeMenu()
@@ -72,36 +73,16 @@ function SideMenu({ isOpen = false, closeMenu = () => {} }) {
 
   return (
     <>
-      {/* Overlay to dim page and close menu on click */}
       <div
-        className={`side-menu-overlay ${isOpen ? 'open' : ''}`}
+        className={`menuOpener ${isOpen ? 'open' : ''}`}
         onClick={() => closeMenu()}
       />
-      <div
-        className={`side-menu ${isOpen ? 'open' : ''}`}
-        aria-hidden={!isOpen}
-      >
-        {/* Header */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            padding: '24px',
-            fontSize: '28px',
-            fontWeight: 'bold',
-          }}
-        >
-          <img
-            src={logo}
-            alt="Logo"
-            style={{
-              objectFit: 'contain',
-              marginRight: '12px',
-            }}
-          />
+      <div className={`menu ${isOpen ? 'open' : ''}`} aria-hidden={!isOpen}>
+        <div className="menuHeader">
+          <img src={logo} alt="Logo" className="menuLogo" />
           <button
             type="button"
-            className="side-menu-close"
+            className="closeMenu"
             onClick={() => closeMenu()}
             aria-label="Close menu"
           >
@@ -109,27 +90,11 @@ function SideMenu({ isOpen = false, closeMenu = () => {} }) {
           </button>
         </div>
 
-        {/* Scrollable menu */}
-        <div
-          style={{
-            flex: 1,
-            overflowY: 'auto',
-            padding: '0 24px',
-          }}
-          // Custom scrollbar
-          className="side-menu-scroll"
-        >
+        <div className="menuScrollbar">
           {menuItems.map((item) => (
-            <div key={item.title} style={{ marginBottom: '24px' }}>
-              {' '}
-              {/* increased from 16px */}
+            <div key={item.title} className="menuSection">
               <div
-                style={{
-                  fontSize: '20px',
-                  cursor: item.subItems.length ? 'pointer' : 'default',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                }}
+                className="menuSectionTitle"
                 onClick={() =>
                   item.subItems.length && toggleDropdown(item.title)
                 }
@@ -139,17 +104,9 @@ function SideMenu({ isOpen = false, closeMenu = () => {} }) {
                   <span>{openDropdown === item.title ? '^' : '>'}</span>
                 ) : null}
               </div>
+
               {openDropdown === item.title && item.subItems.length > 0 && (
-                <div
-                  style={{
-                    marginLeft: '16px',
-                    marginTop: '12px', // increased from 8px
-                    fontSize: '16px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '16px', // increased from 12px
-                  }}
-                >
+                <div className="menuSubItems">
                   {item.subItems.map((sub) => (
                     <div key={sub}>{sub}</div>
                   ))}
@@ -159,17 +116,8 @@ function SideMenu({ isOpen = false, closeMenu = () => {} }) {
           ))}
         </div>
 
-        {/* Social & buttons at bottom */}
-        <div style={{ padding: '24px' }}>
-          <div
-            style={{
-              display: 'flex',
-              gap: '16px',
-              marginBottom: '24px',
-              fontSize: '24px',
-              cursor: 'pointer',
-            }}
-          >
+        <div className="menuFooter">
+          <div className="menuSocials">
             <FaInstagram />
             <FaTiktok />
             <FaXTwitter />
@@ -178,52 +126,12 @@ function SideMenu({ isOpen = false, closeMenu = () => {} }) {
             <FaDiscord />
             <FaHeadphones />
           </div>
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <button
-              style={{
-                background: 'black',
-                color: 'white',
-                border: '2px solid white',
-                padding: '14px 24px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-              }}
-            >
-              SIGN IN
-            </button>
-            <button
-              style={{
-                background: 'black',
-                color: 'white',
-                border: 'none',
-                padding: '14px 24px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-              }}
-            >
-              OR SIGN UP
-            </button>
+
+          <div className="menuButtons">
+            <button className="signIn">SIGN IN</button>
+            <button className="signUp">OR SIGN UP</button>
           </div>
         </div>
-
-        {/* Inline CSS for scrollbar */}
-        <style>
-          {`
-          .side-menu-scroll::-webkit-scrollbar {
-            width: 8px;
-            padding:8px;
-          }
-          .side-menu-scroll::-webkit-scrollbar-track {
-            background: black;
-          }
-          .side-menu-scroll::-webkit-scrollbar-thumb {
-            background-color: #555;
-          }
-          .side-menu-scroll::-webkit-scrollbar-thumb:hover {
-            background-color: #888;
-          }
-        `}
-        </style>
       </div>
     </>
   )

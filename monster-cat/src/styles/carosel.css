@@ -1,54 +1,97 @@
+/* fonts*/
 @font-face {
-  font-family: 'Monument Extended';
-  src: url('../salFonts/monumentextended-regular.woff2') format('woff2');
+  font-family: "Monument Extended";
+  src: url("../fonts/monumentextended-regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Montserrat';
-  src: url('../salFonts/montserrat-thin-italic.woff2') format('woff2');
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat-thin-italic.woff2") format("woff2");
   font-style: italic;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-.album-list{
+.albumList {
   background: black;
 }
 
-.album-section {
+.albumSection {
   position: relative;
   width: 100vw;
   height: 100vh;
-  padding-right: 3vw; /* ensure content doesn't spill beyond viewport */
 }
 
-.album-container,
-.album-info,
-.album-title,
-.album-artist,
+/* carosel sliding animation */
+
+.albumContainer,
+.albumInfo,
+.albumTitle,
+.albumArtist,
 .buttons,
-.album-foreground {
+.albumImage {
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity .6s ease, transform .6s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.active-slide .album-container,
-.active-slide .album-info,
-.active-slide .album-title,
-.active-slide .album-artist,
-.active-slide .buttons,
-.active-slide .album-foreground {
+.activeSlide .albumContainer,
+.activeSlide .albumInfo,
+.activeSlide .albumTitle,
+.activeSlide .albumArtist,
+.activeSlide .buttons,
+.activeSlide .albumImage {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: .8s;
+  transition-delay: 0.8s;
 }
 
+/*prev and next arrows*/
 
-.album-bg {
+.slick-prev,
+.slick-next {
+  z-index: 9999;
+  opacity: 1;
+}
+
+.albumList .slick-prev,
+.albumList .slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: auto;
+}
+
+.albumList .slick-prev {
+  left: clamp(8px, 2vw, 24px);
+}
+
+.albumList .slick-next {
+  right: clamp(8px, 2vw, 24px);
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #fff;
+  font-size: clamp(16px, 4vw, 26px);
+}
+
+.slick-track {
+  display: flex;
+}
+
+.slick-slide {
+  flex: 0 0 100%;
+  height: 100vh;
+  position: relative;
+}
+
+/* background image*/
+
+.albumBg {
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -60,194 +103,302 @@
   background-blend-mode: darken;
 }
 
-.slick-prev,
-.slick-next {
-  z-index: 9999;
+ /* album header with the progress bar, title and artist name*/
+
+.albumHeader {
+  position: absolute;
+  top: clamp(90px, 8vh, 120px);
+  left: 10%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: clamp(20px, 4vw, 50px);
+  z-index: 2;
+  padding: 0 clamp(8px, 2vw, 16px);
+  width: calc(100% - (10% * 2));
+  max-width: 1200px;
+  letter-spacing: 1.8px;
+}
+
+.headerItem {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 8vw, 24px);
+  color: white;
+  margin-right: clamp(24px, 3vw, 40px);
+  font-family: "Monument Extended", sans-serif;
+  opacity: 0.5;
+  min-width: 0;
+}
+
+.headerItem.active {
   opacity: 1;
 }
 
-.album-list .slick-prev,
-.album-list .slick-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: auto;
-}
-
-.album-list .slick-prev { left: 24px; }
-.album-list .slick-next { right: 24px; }
-
-.slick-track {
-  display: flex; /* keep default */
-}
-
-.slick-slide {
-  flex: 0 0 100%;   
-  height: 100vh;    
-  position: relative; 
-}
-
-.album-header {
-  position: absolute;
-  top: 15%;
-  left: 39%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 40px;
-  z-index: 2; 
-}
-
-.album-header-item {
-  display: flex;
-  flex-direction: column;
-  color: white;
-  font-family: 'Monument Extended', sans-serif;
-  opacity: 0.5; /* inactive slides */
-}
-
-.album-header-item.active {
-  opacity: 1; /* active slide */
-}
-
-.header-title {
-  font-size: 20px;
-  letter-spacing: 1.2px;
-}
-
-.header-artist {
-  font-family: 'Monument Extended', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  margin-top: 4px;
-}
-
-.header-progress {
-  width: 300px;                  
-  height: 6px;                   
-  background: rgba(255, 255, 255, 0.2);  
-  border: 2px solid rgba(255, 255, 255, 0.5);         
-  margin-top: 8px;
-  margin-bottom: 20px;
+.headerTitle {
+  font-size: clamp(10px, 2vw, 18px);
+  letter-spacing: clamp(0.4px, 0.15vw, 1px);
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.progress-bar {
+.headerArtist {
+  font-family: "Monument Extended", sans-serif;
+  font-size: clamp(9px, 1.8vw, 15px);
+  font-weight: 400;
+  margin-top: clamp(1px, 0.3vh, 3px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerProgress {
+  width: clamp(220px, 33vw, 370px);
+  height: clamp(5px, 0.6vh, 7px);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-top: clamp(2px, 0.5vh, 4px);
+  margin-bottom: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.progressbar {
   height: 100%;
-  background: white;            
-  width: 0%;
-  border-radius: 2px;          
-  transition: width 0.5s linear; 
+  background: white;
+  border-radius: 1px;
+  transition: width 0.5s linear;
 }
 
-.album-container {
+/* album info and image container*/ 
+
+.albumContainer {
   position: relative;
-  width: 45%;
+  left: 6%;
+  width: 100%;
   z-index: 1;
-  margin-top: 15%;
-  margin-left: 10%;
+  margin-top: clamp(80px, 15vh, 180px);
   display: flex;
   align-items: center;
+  padding-right: clamp(12px, 2vw, 24px);
 }
 
-.album-foreground {
-  width: 85%;
+.albumImage {
+  width: clamp(300px, 65vw, 600px);
+  height: auto;
   max-height: 75vh;
   display: block;
+  aspect-ratio: 1;
+  object-fit: cover;
+  filter: drop-shadow(0 clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px) rgba(0, 0, 0, 0.5));
+  transform: scaleX(-1);
+  margin-top: clamp(90px, 8vh, 120px);
 }
 
-.album-info {
+.albumInfo {
   position: absolute;
-  left: 70%;
-  top: 30%;
-  transform: translateY(-50%);
+  top: clamp(280px, 12vh, 380px);
   color: white;
   z-index: 2;
   text-align: left;
-  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.5vh, 16px);
+  max-width: clamp(250px, 35vw, 450px);
+  padding: 0;
 }
 
-.album-title {
-  font-family: 'Monument Extended', sans-serif;
-  font-size: 50px;
+.albumTitle {
+  font-family: "Monument Extended", sans-serif;
+  font-size: clamp(18px, 4vw, 50px);
   font-weight: 500;
+  white-space: nowrap;
   margin: 0;
-  letter-spacing: 2.1px;
+  letter-spacing: clamp(0.8px, 0.2vw, 2.5px);
   color: transparent;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
+  line-height: clamp(1.1, 1.2, 1.3);
 }
 
-.album-artist {
-  font-family: 'Monument Extended', sans-serif;
-  font-size: 42px;
+.albumArtist {
+  font-family: "Monument Extended", sans-serif;
+  font-size: clamp(16px, 3vw, 36px);
+  white-space: nowrap;
   font-weight: 500;
-  margin: 10px 0 0 0;
-  letter-spacing: 1.75px;
+  margin: 0;
+  letter-spacing: clamp(0.8px, 0.2vw, 1.8px);
+  line-height: clamp(1.1, 1.2, 1.3);
 }
 
 .buttons {
-  margin-top: 30px;
+  margin-top: clamp(8px, 1.5vh, 16px);
   display: flex;
-  gap: 20px;
+  gap: clamp(8px, 1.5vw, 16px);
+  flex-wrap: nowrap;
+  width: 100%;
+  white-space: nowrap;
+  align-items: center;
 }
 
-.view-btn {
+.view {
   background: var(--btn-color);
-  font-family: 'Monument Extended', sans-serif;
-  padding: 20px 30px;
+  font-family: "Monument Extended", sans-serif;
+  padding: clamp(10px, 1.5vh, 18px) clamp(16px, 2vw, 32px);
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: clamp(12px, 1.5vw, 16px);
   font-weight: 500;
   cursor: pointer;
-  letter-spacing: 2.1px;
+  letter-spacing: clamp(0.6px, 0.1vw, 1.4px);
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-.view-btn:hover {
+.view:hover {
   background: white;
   color: black;
 }
 
-.listen-btn {
-  font-family: 'Monument Extended', sans-serif;
+.listen {
+  font-family: "Monument Extended", sans-serif;
   background: transparent;
-  border: 2px solid white;
-  padding: 20px 30px;
+  border: 1px solid white;
+  padding: clamp(10px, 1.5vh, 18px) clamp(16px, 2vw, 32px);
   color: white;
-  font-size: 16px;
+  font-size: clamp(12px, 1.5vw, 16px);
   font-weight: 500;
   cursor: pointer;
-  letter-spacing: 2.1px;
+  letter-spacing: clamp(0.6px, 0.1vw, 1.4px);
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-.listen-btn:hover {
+.listen:hover {
   background: white;
   color: black;
   border-color: white;
 }
 
-.album-meta {
-  font-family: 'Montserrat', sans-serif;
+.albumDate {
+  font-family: "Montserrat", sans-serif;
   position: absolute;
   left: -10px;
-  bottom: 30px;
+  bottom: clamp(12px, 2vh, 30px);
   transform: rotate(-90deg);
   transform-origin: left bottom;
   display: flex;
-  gap: 5px;
-  font-size: 20px;
+  gap: clamp(2px, 1vw, 5px);
+  font-size: clamp(9px, 1.5vw, 14px);
   font-weight: 500;
   white-space: nowrap;
-  letter-spacing: 2.1px;
+  letter-spacing: clamp(0.6px, 0.15vw, 1.8px);
 }
 
-.album-meta .date {
+.albumDate .date {
   color: white;
+  font-size: clamp(16px, 1.5vw, 18px);
 }
 
-.album-meta .category {
+.albumDate .category {
   font-weight: 700;
+  font-size: clamp(16px, 1.5vw, 18px);
 }
 
+
+/*responsive design*/
+
+@media (max-width: 768px) {
+  .albumInfo {
+    position: absolute;
+    left: clamp(16px, 5vw, 32px);
+    top: clamp(180px, 12vh, 220px);
+    max-width: 90%;
+    white-space: normal;
+    gap: clamp(8px, 2vh, 12px);
+  }
+
+  .headerProgress {
+    width: clamp(90px, 30vw, 180px);
+    height: clamp(4px, 0.5vh, 5px);
+  }
+
+  .albumImage {
+    width: clamp(220px, 60vw, 420px);
+  }
+
+  .albumDate {
+    font-size: clamp(9px, 1.5vw, 12px);
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: clamp(8px, 1.5vh, 12px);
+  }
+
+  .view,
+  .listen {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .albumTitle {
+    font-size: clamp(14px, 5vw, 30px);
+  }
+
+  .albumArtist {
+    font-size: clamp(12px, 4vw, 26px);
+  }
+
+  .view,
+  .listen {
+    font-size: clamp(10px, 3vw, 14px);
+    padding: clamp(8px, 2vw, 14px) clamp(12px, 3vw, 24px);
+  }
+
+  .buttons {
+    gap: clamp(4px, 2vw, 8px);
+  }
+
+  .albumHeader {
+    flex-direction: column;
+    gap: clamp(8px, 1.5vw, 12px);
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .albumContainer {
+    margin-left: clamp(6px, 1vw, 12px);
+    padding-right: clamp(6px, 1vw, 12px);
+  }
+
+  .albumImage {
+    width: clamp(160px, 75vw, 320px);
+  }
+
+  .albumInfo {
+    margin-top: clamp(16px, 3vh, 24px);
+  }
+
+  .headerProgress {
+    width: clamp(60px, 90vw, 100px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .albumContainer {
+    margin-left: clamp(40px, 8vw, 80px);
+  }
+
+  .albumImage {
+    width: clamp(450px, 55vw, 650px);
+  }
+
+  .albumInfo {
+    left: clamp(280px, 58vw, 500px);
+  }
+}
