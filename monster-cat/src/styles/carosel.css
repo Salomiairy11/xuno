@@ -201,7 +201,7 @@
 .albumInfo {
   position: absolute;
   top: clamp(260px, 12vh, 350px);
-  left: calc(10% + clamp(260px, 50vw, 480px) - 5%);
+  left: calc(clamp(260px, 50vw, 480px) - 5%);
   transform: translateX(-5%);
   color: white;
   z-index: 2;
@@ -248,10 +248,10 @@
 .view {
   background: var(--btn-color);
   font-family: 'Monument Extended', sans-serif;
-  padding: clamp(10px, 1.5vh, 18px) clamp(16px, 2vw, 32px);
+  padding: clamp(8px, 1.5vh, 15px) clamp(12px, 1.5vw, 28px);
   border: none;
   color: white;
-  font-size: clamp(12px, 1.5vw, 16px);
+  font-size: clamp(10px, 1vw, 14px);
   font-weight: 500;
   cursor: pointer;
   letter-spacing: clamp(0.6px, 0.1vw, 1.4px);
@@ -268,9 +268,9 @@
   font-family: 'Monument Extended', sans-serif;
   background: transparent;
   border: 1px solid white;
-  padding: clamp(10px, 1.5vh, 18px) clamp(16px, 2vw, 32px);
+  padding: clamp(8px, 1.5vh, 15px) clamp(12px, 1.5vw, 28px);
   color: white;
-  font-size: clamp(12px, 1.5vw, 16px);
+  font-size: clamp(10px, 1vw, 14px);
   font-weight: 500;
   cursor: pointer;
   letter-spacing: clamp(0.6px, 0.1vw, 1.4px);

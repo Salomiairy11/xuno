@@ -35,7 +35,7 @@ export default function Contact() {
       }}
     >
       {icons.map((Icon, index) => (
-        <Icon key={index} size={28} />
+        <Icon key={index} size={26} />
       ))}
     </div>
   )
