@@ -1,0 +1,258 @@
+@font-face {
+  font-family: 'Monument Extended';
+  src: url('../salFonts/monumentextended-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../salFonts/montserrat-thin-italic.woff2') format('woff2');
+  font-style: italic;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.album-list{
+  background: black;
+}
+
+.album-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.album-container,
+.album-info,
+.album-title,
+.album-artist,
+.buttons,
+.album-foreground {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.active-slide .album-container,
+.active-slide .album-info,
+.active-slide .album-title,
+.active-slide .album-artist,
+.active-slide .buttons,
+.active-slide .album-foreground {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: .8s;
+}
+
+
+.album-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(12px);
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: darken;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 9999;
+  opacity: 1;
+}
+
+.album-list .slick-prev,
+.album-list .slick-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: auto;
+}
+
+.album-list .slick-prev { left: 24px; }
+.album-list .slick-next { right: 24px; }
+
+.slick-prev:before,
+.slick-next:before {
+  color: #fff;
+  font-size: 26px;
+}
+
+.slick-track {
+  display: flex; /* keep default */
+}
+
+.slick-slide {
+  flex: 0 0 100%;   
+  height: 100vh;    
+  position: relative; 
+}
+
+.album-header {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+  z-index: 2;
+}
+
+.album-header-item {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-family: 'Monument Extended', sans-serif;
+  opacity: 0.5; /* inactive slides */
+}
+
+.album-header-item.active {
+  opacity: 1; /* active slide */
+}
+
+.header-title {
+  font-size: 20px;
+  letter-spacing: 1.2px;
+}
+
+.header-artist {
+  font-family: 'Monument Extended', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.header-progress {
+  width: 300px;                  
+  height: 6px;                   
+  background: rgba(255, 255, 255, 0.2);  
+  border: 2px solid rgba(255, 255, 255, 0.5);         
+  margin-top: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: white;            
+  width: 0%;
+  border-radius: 2px;          
+  transition: width 0.5s linear; 
+}
+
+.album-container {
+  position: relative;
+  width: 45%;
+  z-index: 1;
+  margin-top: 10%;
+  margin-left: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.album-foreground {
+  width: 85%;
+  max-height: 75vh;
+  display: block;
+}
+
+.album-info {
+  position: absolute;
+  left: 70%;
+  top: 30%;
+  transform: translateY(-50%);
+  color: white;
+  z-index: 2;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.album-title {
+  font-family: 'Monument Extended', sans-serif;
+  font-size: 50px;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 2.1px;
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+
+.album-artist {
+  font-family: 'Monument Extended', sans-serif;
+  font-size: 42px;
+  font-weight: 500;
+  margin: 10px 0 0 0;
+  letter-spacing: 1.75px;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.view-btn {
+  background: var(--btn-color);
+  font-family: 'Monument Extended', sans-serif;
+  padding: 20px 30px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 2.1px;
+  transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+  background: white;
+  color: black;
+}
+
+.listen-btn {
+  font-family: 'Monument Extended', sans-serif;
+  background: transparent;
+  border: 2px solid white;
+  padding: 20px 30px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 2.1px;
+  transition: all 0.3s ease;
+}
+
+.listen-btn:hover {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+.album-meta {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  left: -10px;
+  bottom: 30px;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  display: flex;
+  gap: 5px;
+  font-size: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: 2.1px;
+}
+
+.album-meta .date {
+  color: white;
+}
+
+.album-meta .category {
+  font-weight: 700;
+}
+
