@@ -31,4 +31,29 @@
 - Simple state-based dismissal.  
 
 ### **4. Typography & Style Matching**
-- Font families and layout metrics were identified via browser **DevTools** and re-implemented in custom CSS. 
+- Font families and layout metrics were identified via browser **DevTools** and re-implemented in custom CSS.
+
+
+## Carousel Library Used
+This project uses **React Slick**, a React wrapper around the popular *Slick Carousel* library.  
+React Slick was chosen because it offers:
+- Built-in autoplay, infinite scrolling, and custom navigation support  
+- Smooth performance with large full-screen slides  
+- A flexible API compatible with React’s component-driven structure  
+- Easy customization for progress indicators, transitions, and slide metadata
+
+These capabilities made it well-suited for recreating the animated, full-screen Monstercat album carousel.
+
+---
+
+## Design Compromises
+While the UI closely mirrors the original layout, a few practical compromises were made:
+
+- **Responsiveness is not fully optimized:**   
+  Although the layout adapts to different screens, it is not 100% pixel-perfect at every breakpoint. As an AI intern with stronger experience in Python and AI-focused projects, frontend development is a relatively newer area for me. However, I did try to replicate the core carousel interactions, animations, and layout logic, while some fine-grained responsiveness details were approximated.
+
+
+Despite these compromises, the project achieves a faithful and functional reconstruction of the original carousel behavior.
+
+---
+
