@@ -203,7 +203,7 @@
   position: absolute;
   top: 50%;
   left: 100%;
-  transform: translateY(-50%) translateX(-10%); 
+  transform: translateY(-50%) translateX(-10%);
   color: white;
   z-index: 2;
   text-align: left;
@@ -212,7 +212,6 @@
   gap: clamp(8px, 1.5vh, 16px);
   max-width: clamp(200px, 28vw, 380px);
 }
-
 
 .albumTitle {
   font-family: 'Monument Extended', sans-serif;
@@ -256,7 +255,7 @@
   font-size: clamp(8px, 0.8vw, 12px);
   font-weight: 500;
   cursor: pointer;
-  letter-spacing: clamp(0.4px, 0.08vw, 1px); 
+  letter-spacing: clamp(0.4px, 0.08vw, 1px);
   transition: all 0.3s ease;
   white-space: nowrap;
 }
@@ -267,14 +266,13 @@
   border: 1px solid white;
   padding: clamp(5px, 1vh, 10px) clamp(10px, 1vw, 20px);
   color: white;
-  font-size: clamp(8px, 0.8vw, 12px); 
+  font-size: clamp(8px, 0.8vw, 12px);
   font-weight: 500;
   cursor: pointer;
   letter-spacing: clamp(0.4px, 0.08vw, 1px);
   transition: all 0.3s ease;
   white-space: nowrap;
 }
-
 
 .view:hover {
   background: white;
@@ -296,7 +294,7 @@
   transform-origin: left bottom;
   display: flex;
   gap: clamp(2px, 1vw, 5px);
-  font-size: clamp(9px, 1.5vw, 14px);
+  font-size: clamp(9px, 1vw, 12px);
   font-weight: 500;
   white-space: nowrap;
   letter-spacing: clamp(0.6px, 0.15vw, 1.8px);
