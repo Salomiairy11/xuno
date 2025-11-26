@@ -14,7 +14,7 @@ export default function Navbar({ openMenu = () => {}, isMenuOpen = false }) {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: '12px 20px',
+          padding: '8px 20px',
           backgroundColor: 'transparent',
           zIndex: 10000,
           pointerEvents: 'auto',
@@ -24,7 +24,7 @@ export default function Navbar({ openMenu = () => {}, isMenuOpen = false }) {
           src={logo}
           alt="Logo"
           style={{
-            height: '70px',
+            height: '45px',
             width: 'auto',
             zIndex: 10001,
             marginLeft: '4%',
