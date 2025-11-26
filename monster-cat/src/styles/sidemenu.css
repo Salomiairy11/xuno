@@ -1,0 +1,88 @@
+/* Side menu overlay and panel styles */
+.side-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease-in-out;
+}
+.side-menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 360px;
+  transform: translateX(100%);
+  transition: transform 260ms ease-in-out;
+  background: black;
+  color: white;
+  z-index: 11001;
+  display: flex;
+  flex-direction: column;
+}
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.side-menu-close {
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 28px;
+  background: transparent;
+  border: none;
+  color: white;
+}
+
+.side-menu-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  transition: background 180ms ease;
+}
+.side-menu-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.side-menu-close:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.18);
+  outline-offset: 4px;
+}
+
+.side-menu .side-menu-scroll {
+  padding: 0 24px;
+  overflow-y: auto;
+}
+
+/* Smooth content transitions inside the menu */
+.side-menu .album-header-item {
+  opacity: 0.6;
+}
+.side-menu .album-header-item.active {
+  opacity: 1;
+}
+
+/* Ensure this menu overlays and is reachable by tabbing */
+.side-menu:focus {
+  outline: none;
+}
+
+/* Improve small-screen width */
+@media (max-width: 420px) {
+  .side-menu {
+    width: 100vw;
+  }
+}

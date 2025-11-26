@@ -7,6 +7,8 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { useState } from 'react'
 
+// Nav is now rendered at App level
+
 
 
 const albums = [
@@ -117,6 +119,7 @@ export default function Carosel() {
               className="album-bg"
               style={{ backgroundImage: `url(${album.image})` }}
             />
+            {/* Nav is rendered at App level; removed per-slide Nav to avoid duplicates */}
             <div className="album-header">
               {albums.map((alb, i) => (
                 <div

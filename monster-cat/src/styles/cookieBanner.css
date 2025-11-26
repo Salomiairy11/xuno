@@ -1,0 +1,78 @@
+.cookie-banner {
+  width: 100%;
+  height: 12%;
+  background: #f5f5f5;
+  border-top: 1px solid #ddd;
+
+  padding: 12px 18px;         /* slightly taller and tighter horizontally */          /* ensures consistent height */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;                  /* reduce spacing between text and buttons */
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  font-family: Arial, sans-serif;
+  font-size: 18px;            /* slightly larger for readability */
+  box-sizing: border-box;
+
+  flex-wrap: wrap;            /* prevents overflow on smaller screens */
+}
+
+.cookie-text {
+  flex: 1;                    /* lets text take available space without pushing buttons off */
+  max-width: 68%;             /* slightly reduce width to keep buttons on-screen */
+  color: #333;
+  line-height: 1.4;
+  white-space: normal;
+  overflow-wrap: anywhere; /* ensure long words don't overflow */
+}
+
+.cookie-actions {
+  display: flex;
+  gap: 8px;                   /* smaller gap between buttons */
+  flex-shrink: 0;             /* buttons won’t get squished */
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding: 18px 18px;          /* increased padding for better tap targets */
+  border: none;
+  cursor: pointer;
+  font-size: 16px;            /* increase font size for buttons */
+  letter-spacing: 1px;
+  border-radius: 4px;
+  min-width: 100px;          /* keep buttons stable width */
+}
+
+.accept {
+  background: black;
+  color: white;
+}
+
+.reject {
+  background: white;
+  border: 1px solid black;
+  color: black;
+}
+
+/* Responsive: stack on small screens and ensure no overflow */
+@media (max-width: 480px) {
+  .cookie-banner {
+    padding: 12px 12px;
+  }
+  .cookie-text {
+    max-width: 100%;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .cookie-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .btn{ min-width: 48%; }
+}
